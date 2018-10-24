@@ -1,9 +1,12 @@
-# This is just a fork of [GuildEducationInc/docker-amazon-redshift](https://github.com/GuildEducationInc/docker-amazon-redshift)
+## This is just a fork of [GuildEducationInc/docker-amazon-redshift](https://github.com/GuildEducationInc/docker-amazon-redshift)
 
 The fork was done with only one purpose:
+
 To use the PostgreSQL v.8.4.0 instead of v.8.0.2
-The change was made due to a reason that the PostgreSQL v.8.0.2 doesn't support the Window Functions[https://www.postgresql.org/docs/8.4/static/functions-window.html]. Amazon Redshift, on the other hand, supports the Window Functions, as the PostgreSQL v.8.4.0 does.
-So, the Docker image was updated to use the PostgreSQL v.8.4.0 to get an ability to test the usage of the Window Functions and see how they will work on Amazon Redshift.
+
+The change was made due to a reason that the PostgreSQL v.8.0.2 doesn't support the [Window Functions](https://www.postgresql.org/docs/8.4/static/functions-window.html). Amazon Redshift, on the other hand, supports the Window Functions, as the PostgreSQL v.8.4.0 does.
+
+So, the Docker image was updated to use the PostgreSQL v.8.4.0 to provide an ability to test the usage of the Window Functions and see how they will work on Amazon Redshift.
 
 # Docker Amazon Redshift
 
