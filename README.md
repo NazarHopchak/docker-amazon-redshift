@@ -1,4 +1,4 @@
-## This is just a fork of [GuildEducationInc/docker-amazon-redshift](https://github.com/GuildEducationInc/docker-amazon-redshift)
+## This is a fork of [GuildEducationInc/docker-amazon-redshift](https://github.com/GuildEducationInc/docker-amazon-redshift)
 
 The fork was done with only one purpose:
 
