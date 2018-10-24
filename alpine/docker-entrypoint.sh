@@ -102,8 +102,6 @@ if [ "$1" = 'postmaster' ]; then
 		file_env 'POSTGRES_USER' 'postgres'
 		file_env 'POSTGRES_DB' "$POSTGRES_USER"
 
-		createdb -O $POSTGRES_USER postgres "default administrative connection database"
-
 		psql=( psql -v ON_ERROR_STOP=1 )
 
 		if [ "$POSTGRES_DB" != 'postgres' ]; then
