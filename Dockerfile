@@ -34,6 +34,7 @@ RUN apt-get update && apt-get install -y locales libxml2-dev libxslt-dev curl ma
     && tar xf postgresql-$PG_MAJOR.tar.gz \
     && cd postgresql-$PG_MAJOR \
     && ./configure \
+      CFLAGS="-Wno-aggressive-loop-optimizations" \
       --enable-integer-datetimes \
       --enable-thread-safety \
       --enable-tap-tests \
