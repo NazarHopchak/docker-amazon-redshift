@@ -24,7 +24,7 @@ ENV LANG en_US.utf8
 ENV PGPORT 5439
 ENV PGDATA /var/lib/postgresql/data
 ENV PATH /usr/local/pgsql/bin:$PATH
-ENV PG_MAJOR 8.0.2
+ENV PG_MAJOR 8.4.0
 ENV PG_MD5 62ca2786a4856c492fbdcd23bedb48c6
 
 RUN apt-get update && apt-get install -y locales curl make gcc libreadline-dev zlib1g-dev libssl-dev \
