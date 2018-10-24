@@ -78,6 +78,7 @@ RUN set -ex \
 		--build="$gnuArch" \
 # "/usr/src/postgresql/src/backend/access/common/tupconvert.c:105: undefined reference to `libintl_gettext'"
 #		--enable-nls \
+		CFLAGS="-Wno-aggressive-loop-optimizations" \
 		--enable-integer-datetimes \
 		--enable-thread-safety \
 		--enable-tap-tests \
