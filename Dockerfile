@@ -27,7 +27,7 @@ ENV PATH /usr/local/pgsql/bin:$PATH
 ENV PG_MAJOR 8.4.0
 ENV PG_MD5 03d585bcf44c70df94a9b542e6b76b95
 
-RUN apt-get update && apt-get install -y locales libxml2 libxml2-dev libxslt-dev curl make gcc libreadline-dev zlib1g-dev libssl-dev \
+RUN apt-get update && apt-get install -y locales libxml2-dev libxslt-dev curl make gcc libreadline-dev zlib1g-dev libssl-dev \
     && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 \
     && curl -O https://ftp.postgresql.org/pub/source/v$PG_MAJOR/postgresql-$PG_MAJOR.tar.gz \
     && echo "$PG_MD5 *postgresql-$PG_MAJOR.tar.gz" | md5sum -c - \
