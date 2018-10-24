@@ -1,6 +1,13 @@
+# This is just a fork of [GuildEducationInc/docker-amazon-redshift](https://github.com/GuildEducationInc/docker-amazon-redshift)
+
+The fork was done with only one purpose:
+To use the PostgreSQL v.8.4.0 instead of v.8.0.2
+The change was made due to a reason that the PostgreSQL v.8.0.2 doesn't support the Window Functions[https://www.postgresql.org/docs/8.4/static/functions-window.html]. Amazon Redshift, on the other hand, supports the Window Functions, as the PostgreSQL v.8.4.0 does.
+So, the Docker image was updated to use the PostgreSQL v.8.4.0 to get an ability to test the usage of the Window Functions and see how they will work on Amazon Redshift.
+
 # Docker Amazon Redshift
 
-This is an unofficial implementation of Amazon Redshift inside a Docker container. At this time, the container is merely PostgreSQL 8.0.2 running  on port 5439 inside the container. No other changes have been made to make it more closely match the behavior of Redshift.
+This is an unofficial implementation of Amazon Redshift inside a Docker container. At this time, the container is merely PostgreSQL 8.4.0 running  on port 5439 inside the container. No other changes have been made to make it more closely match the behavior of Redshift.
 
 There are two variants: one based on Debian Jessie and another based on Alpine 3.5. The Dockerfiles and entrypoint scripts are closely based on those used in the [official Postgres images](https://hub.docker.com/_/postgres/).
 
