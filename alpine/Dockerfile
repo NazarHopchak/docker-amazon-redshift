@@ -23,7 +23,7 @@ RUN mkdir /docker-entrypoint-initdb.d
 
 ENV PG_MAJOR 8.4.0
 ENV PG_VERSION 8.4.0
-ENV PG_MD5 62ca2786a4856c492fbdcd23bedb48c6
+ENV PG_MD5 03d585bcf44c70df94a9b542e6b76b95
 ENV PGPORT=5439
 
 RUN set -ex \
