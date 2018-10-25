@@ -123,17 +123,17 @@ if [ "$1" = 'postmaster' ]; then
 		
 		# add function ROUND(float,int) to PostgreSQL
 		"${psql[@]}" --username postgres <<-EOSQL
-			CREATE FUNCTION ROUND(float,int) RETURNS NUMERIC AS $$
-    			SELECT ROUND($1::numeric,$2);
- 			$$ language SQL IMMUTABLE;
+			CREATE FUNCTION ROUND(i float,n int) RETURNS NUMERIC
+    			AS 'SELECT ROUND(i::numeric,n);'
+ 			LANGUAGE SQL IMMUTABLE;
 		EOSQL
 		echo
 		
 		# add function LISTAGG to PostgreSQL
 		"${psql[@]}" --username postgres <<-EOSQL
-			CREATE FUNCTION LISTAGG(text,text default ',') RETURNS text AS $$
-    			SELECT string_agg($1,$2);
- 			$$ language SQL IMMUTABLE;
+			CREATE FUNCTION LISTAGG(t text,d text default ',') RETURNS text
+    			AS 'SELECT string_agg(t,d);'
+ 			LANGUAGE SQL IMMUTABLE;
 		EOSQL
 		echo
 
