@@ -126,8 +126,8 @@ if [ "$1" = 'postmaster' ]; then
 			CREATE FUNCTION ROUND(i float,n int) RETURNS NUMERIC
     			AS 'SELECT ROUND($1::numeric,$2);'
  			LANGUAGE SQL IMMUTABLE;
+	        EOF
 		EOSQL
-		EOF
 		echo
 		
 		# add function LISTAGG to PostgreSQL
@@ -135,8 +135,8 @@ if [ "$1" = 'postmaster' ]; then
 			CREATE FUNCTION LISTAGG(t text,d text default ',') RETURNS text
     			AS 'SELECT string_agg($1,$2);'
  			LANGUAGE SQL IMMUTABLE;
-		EOSQL
 		EOF
+		EOSQL
 		echo
 
 		psql+=( --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" )
