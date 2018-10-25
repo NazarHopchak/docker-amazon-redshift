@@ -121,19 +121,33 @@ if [ "$1" = 'postmaster' ]; then
 		EOSQL
 		echo
 		
-		# add function ROUND(float,int) to PostgreSQL
-		"${psql[@]}" --username postgres <<-EOSQL
-			CREATE FUNCTION ROUND(i float,n int) RETURNS NUMERIC
+		# add function ROUND(double precision,integer) to PostgreSQL
+		"${psql[@]}" $POSTGRES_DB --username postgres <<-EOSQL
+			CREATE FUNCTION ROUND(i double precision,n integer) RETURNS NUMERIC
     			AS 'SELECT ROUND(\$1::numeric,\$2);'
  			LANGUAGE SQL IMMUTABLE;
 		EOSQL
 		echo
 		
 		# add function LISTAGG to PostgreSQL
-		"${psql[@]}" --username postgres <<-EOSQL
-			CREATE FUNCTION LISTAGG(t text,d text default '') RETURNS text
-    			AS 'SELECT RTRIM(xmlagg((\$1 || \$2)::xml)::text, \$2);'
- 			LANGUAGE SQL IMMUTABLE;
+		"${psql[@]}" $POSTGRES_DB --username postgres <<-EOSQL
+			CREATE FUNCTION LISTAGG_transfn(state text, next text, delimiter text)
+    			RETURNS text AS 'SELECT \$1 || \$3 || \$2;'
+    			LANGUAGE SQL IMMUTABLE STRICT;
+
+			CREATE AGGREGATE LISTAGG(text, text)(
+  				sfunc       = LISTAGG_transfn,
+  				stype       = text
+			);
+
+			CREATE FUNCTION LISTAGG_transfn(state text, next text)
+    			RETURNS text AS 'SELECT \$1 || \$2;'
+    			LANGUAGE SQL IMMUTABLE STRICT;
+
+			CREATE AGGREGATE LISTAGG(text)(
+  				sfunc       = LISTAGG_transfn,
+  				stype       = text
+			);
 		EOSQL
 		echo
 
