@@ -8,9 +8,9 @@ The change was made due to a reason that the PostgreSQL v.8.0.2 doesn't support 
 
 So, the Docker image was updated to use the PostgreSQL v.8.4.0 to provide an ability to test the usage of the Window Functions and see how they will work on Amazon Redshift.
 
-Also the implementation of ROUND(double presion, integer) and LISTAGG was added. 
+Also the implementation of ROUND(double precision, integer) and LISTAGG was added. 
 
-The LISTAGG is still a work in progress, though, because an ideal version of it needs to be able to support both DISTINCT and a delimiter at the second argument at the same time. The current version of LISTAGG supports either DISTINCT, or second argument(delimiter) - due to specific limitations of 'aggregates' in PostgreSQL v.8.4.0.
+The LISTAGG is still a work in progress, though, because an ideal version of it needs to be able to support both DISTINCT and a delimiter at the second argument at the same time. The current version of LISTAGG supports either DISTINCT or second argument(delimiter) - due to specific limitations of 'aggregates' in PostgreSQL v.8.4.0.
 
 # Docker Amazon Redshift
 
