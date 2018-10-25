@@ -12,7 +12,7 @@ So, the Docker image was updated to use the PostgreSQL v.8.4.0 to provide an abi
 
 This is an unofficial implementation of Amazon Redshift inside a Docker container. At this time, the container is merely PostgreSQL 8.4.0 running  on port 5439 inside the container. No other changes have been made to make it more closely match the behavior of Redshift.
 
-There are two variants: one based on Debian Jessie and another based on Alpine 3.5. The Dockerfiles and entrypoint scripts are closely based on those used in the [official Postgres images](https://hub.docker.com/_/postgres/).
+It's based on Debian Jessie. The Dockerfile and entrypoint script are closely based on those used in the [official Postgres images](https://hub.docker.com/_/postgres/).
 
 ## How to use the image
 
