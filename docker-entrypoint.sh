@@ -120,6 +120,22 @@ if [ "$1" = 'postmaster' ]; then
 			$op USER "$POSTGRES_USER" WITH CREATEUSER CREATEDB $pass ;
 		EOSQL
 		echo
+		
+		# add function ROUND(float,int) to PostgreSQL
+		"${psql[@]}" --username postgres <<-EOSQL
+			CREATE FUNCTION ROUND(float,int) RETURNS NUMERIC AS $$
+    			SELECT ROUND($1::numeric,$2);
+ 			$$ language SQL IMMUTABLE;
+		EOSQL
+		echo
+		
+		# add function LISTAGG to PostgreSQL
+		"${psql[@]}" --username postgres <<-EOSQL
+			CREATE FUNCTION LISTAGG(text,text default ',') RETURNS text AS $$
+    			SELECT string_agg($1,$2);
+ 			$$ language SQL IMMUTABLE;
+		EOSQL
+		echo
 
 		psql+=( --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" )
 
