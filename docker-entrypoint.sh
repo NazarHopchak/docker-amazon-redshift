@@ -131,8 +131,8 @@ if [ "$1" = 'postmaster' ]; then
 		
 		# add function LISTAGG to PostgreSQL
 		"${psql[@]}" --username postgres <<-EOSQL
-			CREATE FUNCTION LISTAGG(t text,d text default ',') RETURNS text
-    			AS 'SELECT string_agg(\$1,\$2);'
+			CREATE FUNCTION LISTAGG(t text,d text default '') RETURNS text
+    			AS 'SELECT RTRIM(xmlagg((\$1 || \$2)::xml)::text, \$2);'
  			LANGUAGE SQL IMMUTABLE;
 		EOSQL
 		echo
